@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DoctorAI — AI Medical Assistant</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+</head>
+<body>
+<div id="app">
+  <aside id="sidebar" class="sidebar">
+    <button id="sidebarToggle" class="hamburger">☰</button>
+    <div class="brand">
+      <span class="logo">🩺</span>
+      <h1>DoctorAI</h1>
+    </div>
+    <nav class="menu">
+      <button class="menu-item active" data-view="chat">💬 Chat</button>
+      <button class="menu-item" data-view="profile">👤 Profile</button>
+      <button class="menu-item" data-view="history">🗂 History</button>
+      <button class="menu-item" data-view="settings">⚙️ Settings</button>
+    </nav>
+    <div class="map-section">
+      <h3>Nearby Hospitals</h3>
+      <button id="useLocationBtn" class="tiny-btn full">Use my location</button>
+      <input id="mapSearchInput" placeholder="City / Area"/>
+      <button id="mapSearchBtn" class="tiny-btn full">Search</button>
+      <div id="sidebarMap" class="sidebar-map"></div>
+    </div>
+    <div class="language-section">
+      <h3>Language</h3>
+      <select id="languageSelect" class="language-dropdown">
+        <option value="en">🇺🇸 English</option>
+        <option value="ne">🇳🇵 नेपाली</option>
+      </select>
+    </div>
+    <div class="sidebar-bottom">
+      <label class="switch">
+        <input id="themeToggle" type="checkbox"/>
+        <span class="slider"></span>
+      </label>
+      <span id="themeLabel">Light</span>
+    </div>
+  </aside>
+
+  <main id="content" class="content">
+    <header class="topbar">
+      <div class="top-title">
+        <h2>Medical Chat</h2>
+        <p class="sub">MediBot — calm, professional tone (not a doctor)</p>
+      </div>
+    </header>
+
+    <div id="welcomeScreen" class="welcome-container">
+      <div class="welcome-message-card">
+        <p class="welcome-message-title">✨ Hello! I am DoctorAI</p>
+        <p class="welcome-message-subtitle">How can I help you today?</p>
+        <div class="welcome-card-footer">
+          <p>This is a small project using the Gemini API. </p>
+          <a href="#">Learn more</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="chatWindow" class="chat-plain"></div>
+
+    <form id="chatForm" class="chat-input">
+      <input id="userInput" type="text" placeholder="Describe your symptoms…" required/>
+      <button type="submit" class="btn">Send</button>
+    </form>
+  </main>
+</div>
+
+<div id="overlay" class="overlay hidden"></div>
+
+<footer class="disclaimer">
+⚠️ DoctorAI is not a doctor. For emergencies, consult a healthcare professional immediately.
+</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="main.js"></script>
+<script src="chat.js"></script>
+<script src="map.js"></script>
+</body>
+</html>
